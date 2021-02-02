@@ -28,3 +28,5 @@ Join our Tencent group by contacting EmiliaMajiTenshi.
 ## Improvement
 
 See a typo/feature you would like to work on? Open a pull request and contact EmiliaMajiTenshi at EmiliaMajiTenshi@outlook.com.
+
+给阿熊的一点留言：我在用VSCode写这个插件，可以选择live share一起写，好些文件我都想重新改写。
