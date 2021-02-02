@@ -4,7 +4,7 @@ A Minecraft MMORPG plugin contains different classes and skills.
 
 ## Technologies used
 
-Java <br />
+- Java <br />
 
 ## Development
 
@@ -23,7 +23,7 @@ Please merge into the develop branch and see if it works on the deployment pipel
 
 ## Communication
 
-Join our QQ group by contacting EmiliaMajiTenshi, the author.
+Join our Tencent group by contacting EmiliaMajiTenshi.
 
 ## Improvement
 
