@@ -2,7 +2,7 @@
 
 A Minecraft MMORPG plugin contains different classes and skills.
 
-## Technologies used:
+## Technologies used
 
 Java <br />
 
