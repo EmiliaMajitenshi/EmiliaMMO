@@ -33,4 +33,3 @@ See a typo/feature you would like to work on? Open a pull request and contact Em
 
 Please check issue page often.
 
-给阿熊的一点留言：我在用VSCode写这个插件，可以选择live share一起写，好些文件我都想重新改写。
