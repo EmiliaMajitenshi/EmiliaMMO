@@ -1,66 +1,146 @@
-// package me.EmiliaMMO.data;
+package me.EmiliaMMO.data;
 
-// import java.io.File;
-// import java.io.IOException;
-// import java.io.InputStream;
-// import java.io.InputStreamReader;
-// import java.util.logging.Level;
-// import org.bukkit.configuration.file.FileConfiguration;
-// import org.bukkit.configuration.file.YamlConfiguration;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-// import me.EmiliaMMO.Main;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
-// public class PlayerConfigurationUtils {
-// private Main plugin;
-// private FileConfiguration dataConfig = null;
-// private File configFile = null;
+import me.EmiliaMMO.Main;
 
-// public PlayerConfigurationUtils(Main plugin) {
-// this.plugin = plugin;
-// saveDefaultConfig();
-// }
+/**
+ * Collection of methods for reading and writing data in player config files.
+ */
+public class PlayerConfigurationUtils {
 
-// public void reloadConfig() {
-// if (this.configFile == null) {
-// this.configFile = new File(this.plugin.getDataFolder(), "data.yml");
-// }
-// this.dataConfig = YamlConfiguration.loadConfiguration(this.configFile);
-// InputStream defaultStream = this.plugin.getResource("data.yml");
-// if (defaultStream != null) {
-// YamlConfiguration defaultConfig = YamlConfiguration.loadConfiguration(new
-// InputStreamReader(defaultStream));
-// this.dataConfig.setDefaults(defaultConfig);
-// }
-// }
+    private static Main core = Main.getInstance();
 
-// public FileConfiguration getConfig() {
-// if (this.dataConfig == null) {
-// reloadConfig();
-// }
+    private static File getPlayerDataFile(Player player) {
+        return new File(core.getDataFolder(), "userdata" + File.separator + player.getUniqueId() + ".yml");
+    }
 
-// return this.dataConfig;
-// }
+    private static File getPlayerDataFile(OfflinePlayer player) {
+        return new File(core.getDataFolder(), "userdata" + File.separator + player.getUniqueId() + ".yml");
+    }
 
-// public void saveConfig() {
-// if (this.dataConfig == null || this.configFile == null) {
-// return;
-// }
+    protected static void playerConfigSet(Player player, String key, String value) {
+        try {
+            File playerDataFile = getPlayerDataFile(player);
+            FileConfiguration playerDataConfig = YamlConfiguration.loadConfiguration(playerDataFile);
 
-// try {
-// this.getConfig().save(this.configFile);
-// } catch (IOException e) {
-// plugin.getLogger().log(Level.SEVERE, "Could not save config to " +
-// this.configFile, e);
-// }
-// }
+            playerDataConfig.set(key, value);
+            playerDataConfig.save(playerDataFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-// public void saveDefaultConfig() {
-// if (this.configFile == null) {
-// this.configFile = new File(this.plugin.getDataFolder(), "data.yml");
-// }
-// if (!this.configFile.exists()) {
-// this.plugin.saveResource("data.yml", false);
-// }
-// }
+    protected static void playerConfigSet(OfflinePlayer player, String key, String value) {
+        try {
+            File playerDataFile = getPlayerDataFile(player);
+            FileConfiguration playerDataConfig = YamlConfiguration.loadConfiguration(playerDataFile);
 
-// }
+            playerDataConfig.set(key, value);
+            playerDataConfig.save(playerDataFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected static String playerConfigGetString(Player player, String key) {
+        File playerDataFile = getPlayerDataFile(player);
+        FileConfiguration playerDataConfig = YamlConfiguration.loadConfiguration(playerDataFile);
+        return playerDataConfig.getString(key);
+    }
+
+    protected static String playerConfigGetString(OfflinePlayer player, String key) {
+        File playerDataFile = getPlayerDataFile(player);
+        FileConfiguration playerDataConfig = YamlConfiguration.loadConfiguration(playerDataFile);
+        return playerDataConfig.getString(key);
+    }
+
+    protected static List<String> playerConfigGetStringList(Player player, String key) {
+        File playerDataFile = getPlayerDataFile(player);
+        FileConfiguration playerDataConfig = YamlConfiguration.loadConfiguration(playerDataFile);
+        return playerDataConfig.getStringList(key);
+    }
+
+    protected static List<String> playerConfigGetStringList(OfflinePlayer player, String key) {
+        File playerDataFile = getPlayerDataFile(player);
+        FileConfiguration playerDataConfig = YamlConfiguration.loadConfiguration(playerDataFile);
+        return playerDataConfig.getStringList(key);
+    }
+
+    protected static Integer playerConfigGetInt(Player player, String key) {
+        File playerDataFile = getPlayerDataFile(player);
+        FileConfiguration playerDataConfig = YamlConfiguration.loadConfiguration(playerDataFile);
+        return playerDataConfig.getInt(key);
+    }
+
+    protected static Integer playerConfigGetInt(OfflinePlayer player, String key) {
+        File playerDataFile = getPlayerDataFile(player);
+        FileConfiguration playerDataConfig = YamlConfiguration.loadConfiguration(playerDataFile);
+        return playerDataConfig.getInt(key);
+    }
+
+    protected static Long playerConfigGetLong(Player player, String key) {
+        File playerDataFile = getPlayerDataFile(player);
+        FileConfiguration playerDataConfig = YamlConfiguration.loadConfiguration(playerDataFile);
+        return playerDataConfig.getLong(key);
+    }
+
+    protected static Long playerConfigGetLong(OfflinePlayer player, String key) {
+        File playerDataFile = getPlayerDataFile(player);
+        FileConfiguration playerDataConfig = YamlConfiguration.loadConfiguration(playerDataFile);
+        return playerDataConfig.getLong(key);
+    }
+
+    protected static Double playerConfigGetDouble(Player player, String key) {
+        File playerDataFile = getPlayerDataFile(player);
+        FileConfiguration playerDataConfig = YamlConfiguration.loadConfiguration(playerDataFile);
+        return playerDataConfig.getDouble(key);
+    }
+
+    protected static Double playerConfigGetDouble(OfflinePlayer player, String key) {
+        File playerDataFile = getPlayerDataFile(player);
+        FileConfiguration playerDataConfig = YamlConfiguration.loadConfiguration(playerDataFile);
+        return playerDataConfig.getDouble(key);
+    }
+
+    protected static Boolean playerConfigGetBoolean(Player player, String key) {
+        File playerDataFile = getPlayerDataFile(player);
+        FileConfiguration playerDataConfig = YamlConfiguration.loadConfiguration(playerDataFile);
+        return playerDataConfig.getBoolean(key);
+    }
+
+    protected static Boolean playerConfigGetBoolean(OfflinePlayer player, String key) {
+        File playerDataFile = getPlayerDataFile(player);
+        FileConfiguration playerDataConfig = YamlConfiguration.loadConfiguration(playerDataFile);
+        return playerDataConfig.getBoolean(key);
+    }
+
+    protected static Location playerConfigGetLocation(Player player, String key) {
+        File playerDataFile = getPlayerDataFile(player);
+        FileConfiguration playerDataConfig = YamlConfiguration.loadConfiguration(playerDataFile);
+        List<Double> cords = new ArrayList<Double>();
+        for (String cord : playerDataConfig.getString(key).split(" ")) {
+            cords.add(Double.parseDouble(cord));
+        }
+        return new Location(Bukkit.getWorld(playerConfigGetString(player, "pos.world")), cords.get(0), cords.get(1),
+                cords.get(2));
+    }
+
+    protected static ItemStack[] playerConfigGetItemStacks(Player player, String key) {
+        File playerDataFile = getPlayerDataFile(player);
+        FileConfiguration playerDataConfig = YamlConfiguration.loadConfiguration(playerDataFile);
+        List<?> itemStackList = playerDataConfig.getList(key);
+        return itemStackList != null ? itemStackList.toArray(new ItemStack[0]) : new ItemStack[0];
+    }
+}

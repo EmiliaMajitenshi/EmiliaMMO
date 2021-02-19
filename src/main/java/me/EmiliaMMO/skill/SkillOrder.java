@@ -8,6 +8,10 @@ import java.util.UUID;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+
+import me.EmiliaMMO.players.classes.PlayerClassPool;
+import me.EmiliaMMO.data.players.PlayerConfigurator;
+
 import org.bukkit.Sound;
 
 public class SkillOrder {
@@ -31,8 +35,9 @@ public class SkillOrder {
         return true;
     }
 
-    public static boolean noAutoAttackStart(Player player) {
-        if (getMapPlayerSkillOrder(player)[0].equals("-"))
+    public static boolean noMainHandStart(Player player, String paramString) {
+        String playerMainHand = PlayerClassPool.getPlayerClass(player).getClassMainHand();
+        if (playerMainHand.equalsIgnoreCase(paramString) && getMapPlayerSkillOrder(player)[0].equals("-"))
             return false;
         return true;
     }

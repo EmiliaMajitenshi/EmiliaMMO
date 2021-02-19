@@ -12,14 +12,24 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
   <repositories>
       <repository>
           <id>spigot-repo</id>
           <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+      </repository>
+      <repository>
+          <id>zz_lumine-repo</id>
+          <url>http://mvn.lumine.io/repository/maven-releases/</url>
+          <snapshots>
+              <enabled>false</enabled>
+          </snapshots>
+      <releases>
+          <enabled>true</enabled>
+      </releases>
       </repository>
   </repositories>
 
@@ -30,6 +40,26 @@
             <version>1.16.4-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
       </dependency>
+
+      <dependency>
+          <groupId>net.Indyuce</groupId>
+          <artifactId>MMOItems</artifactId>
+          <version>6.5</version>
+          <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.reflections</groupId>
+        <artifactId>reflections</artifactId>
+        <version>0.9.12</version>
+		  </dependency>
+
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>3.0</version>
+      </dependency>
+
   </dependencies>
 
   <build>
